@@ -18,6 +18,7 @@ using Serilog.Exceptions;
 using Serilog.Sinks.Elasticsearch;
 using WebApplication5.RabbitMQ;
 using RabbitMQ.Client;
+using Microsoft.AspNetCore.Server.Kestrel.Https;
 
 var builder = WebApplication.CreateBuilder(args);
 
