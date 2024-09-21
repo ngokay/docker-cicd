@@ -142,7 +142,7 @@ var apiVersionDescriptionProvider = app.Services.GetRequiredService<IApiVersionD
 //}
 
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
