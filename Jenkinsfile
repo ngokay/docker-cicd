@@ -23,9 +23,6 @@ pipeline{
         stage("Prune docker data"){
             steps{
                 bat 'docker system prune -a --volumes -f'
-                bat 'docker-compose down'
-                bat 'docker rm -f $(docker ps -a -q)'
-                bat 'docker volume rm $(docker volume ls -q)'
             }
         }
 
