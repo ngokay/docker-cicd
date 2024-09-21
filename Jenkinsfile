@@ -39,11 +39,11 @@ pipeline{
 
         stage("Build container"){
             steps{
+                bat 'docker context use default'
                 //bat 'docker-compose up -d --no-color --wait'
                 bat 'docker-compose build'
                 // Push the image
-                bat "docker-compose push"
-                bat 'docker-compose ps'
+                bat 'docker-compose push'
             }
         }        
     }
