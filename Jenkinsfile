@@ -1,6 +1,6 @@
 pipeline{
     environment{
-        DOCKER_IMAGE = "anhnt/testcicd-docker"
+        dockerHubCredentials = 'docker-hub'
     }
     agent any
     stages{
@@ -26,18 +26,31 @@ pipeline{
             }
         }
 
-        stage("Start container"){
-            steps{
-                bat 'docker-compose up -d --no-color --wait'
-                bat 'docker-compose ps'
+        stage('Docker Hub login') {
+            steps {
+                script {
+                    // Use Jenkins credentials for Docker Hub login
+                    withCredentials([usernamePassword(credentialsId: dockerHubCredentials, usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                        bat "docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD"
+                    }
+                }
             }
         }
+
+        stage("Build container"){
+            steps{
+                //bat 'docker-compose up -d --no-color --wait'
+                bat 'docker-compose build'
+                // Push the image
+                bat "docker-compose push"
+                bat 'docker-compose ps'
+            }
+        }        
     }
     post{
         always{
             echo "========always========"
             //bat 'docker-compose down --remove-orphans -v'
-            bat 'docker-compose ps'
         }
         success{
             echo "========pipeline executed successfully ========"
