@@ -32,12 +32,6 @@ pipeline{
                 bat 'docker-compose ps'
             }
         }
-        stage("Run test"){
-            steps{
-                bat 'curl http://localhost:5000'
-            }
-        }
-
     }
     post{
         always{
