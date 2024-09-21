@@ -23,6 +23,9 @@ pipeline{
         stage("Prune docker data"){
             steps{
                 bat 'docker system prune -a --volumes -f'
+                bat 'docker-compose down'
+                bat 'docker rm -f $(docker ps -a -q)'
+                bat 'docker volume rm $(docker volume ls -q)'
             }
         }
 
@@ -42,7 +45,7 @@ pipeline{
     post{
         always{
             echo "========always========"
-            bat 'docker-compose down --remove-orphans -v'
+            //bat 'docker-compose down --remove-orphans -v'
             bat 'docker-compose ps'
         }
         success{
