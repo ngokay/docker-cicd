@@ -1,0 +1,166 @@
+name: dockercompose3034519528584370576
+services:
+  consumer:
+    build:
+      context: C:\Users\NgoAnh\source\repos\WebApplication5
+      dockerfile: Consumer1/Dockerfile
+    depends_on:
+      rabbitmq:
+        condition: service_started
+        required: true
+      webapplication5:
+        condition: service_started
+        required: true
+    image: consumer
+    links:
+      - rabbitmq
+      - webapplication5
+    networks:
+      elastic: null
+    volumes:
+      - type: volume
+        source: test_volume
+        target: /backup/consumer
+        volume: {}
+  elasticsearch:
+    container_name: es01
+    environment:
+      ES_JAVA_OPTS: -Xms512m -Xmx512m
+      discovery.type: single-node
+      xpack.monitoring.enabled: "true"
+      xpack.watcher.enabled: "false"
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.16.1
+    networks:
+      elastic: null
+    ports:
+      - mode: ingress
+        target: 9200
+        published: "9200"
+        protocol: tcp
+    volumes:
+      - type: volume
+        source: test_volume
+        target: /backup/elasticsearch
+        volume: {}
+  kibana:
+    container_name: kibana
+    depends_on:
+      elasticsearch:
+        condition: service_started
+        required: true
+    environment:
+      ELASTICSEARCH_URL: http://es01:9200
+    image: docker.elastic.co/kibana/kibana:7.16.1
+    networks:
+      elastic: null
+    ports:
+      - mode: ingress
+        target: 5601
+        published: "5601"
+        protocol: tcp
+    volumes:
+      - type: volume
+        source: test_volume
+        target: /backup/kibana
+        volume: {}
+  rabbitmq:
+    container_name: rabbitmq
+    environment:
+      AMQP_URL: amqp://guest:guest@localhost:5672
+      RABBITMQ_DEFAULT_PASS: guest
+      RABBITMQ_DEFAULT_USER: guest
+    image: rabbitmq:3-management
+    networks:
+      elastic: null
+    ports:
+      - mode: ingress
+        target: 5672
+        published: "5672"
+        protocol: tcp
+      - mode: ingress
+        target: 15672
+        published: "15672"
+        protocol: tcp
+    volumes:
+      - type: volume
+        source: test_volume
+        target: /var/lib/rabbitmq
+        volume: {}
+      - type: volume
+        source: test_volume
+        target: /var/log/rabbitmq
+        volume: {}
+  redis:
+    container_name: redis-server
+    image: redis
+    networks:
+      elastic: null
+    ports:
+      - mode: ingress
+        target: 6379
+        published: "6379"
+        protocol: tcp
+    restart: always
+    volumes:
+      - type: volume
+        source: test_volume
+        target: /backup/redis
+        volume: {}
+  webapplication5:
+    build:
+      context: C:\Users\NgoAnh\source\repos\WebApplication5
+      dockerfile: WebApplication5/Dockerfile
+    depends_on:
+      rabbitmq:
+        condition: service_started
+        required: true
+      redis:
+        condition: service_started
+        required: true
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_HTTP_PORTS: "5000"
+      ASPNETCORE_HTTPS_PORTS: "5001"
+      ASPNETCORE_URLS: https://+:5001;http://+:5000
+    image: webapplication5
+    networks:
+      elastic: null
+    ports:
+      - mode: ingress
+        target: 5000
+        published: "5000"
+        protocol: tcp
+      - mode: ingress
+        target: 5001
+        published: "5001"
+        protocol: tcp
+      - mode: ingress
+        target: 5000
+        protocol: tcp
+      - mode: ingress
+        target: 5001
+        protocol: tcp
+    volumes:
+      - type: volume
+        source: test_volume
+        target: /backup/webapplication5
+        volume: {}
+      - type: bind
+        source: C:\Users\NgoAnh\AppData\Roaming/Microsoft/UserSecrets
+        target: /root/.microsoft/usersecrets
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\NgoAnh\AppData\Roaming/ASP.NET/Https
+        target: /root/.aspnet/https
+        read_only: true
+        bind:
+          create_host_path: true
+networks:
+  elastic:
+    name: dockercompose3034519528584370576_elastic
+    driver: bridge
+volumes:
+  test_volume:
+    name: volume-test

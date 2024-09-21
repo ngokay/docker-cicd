@@ -1,0 +1,76 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "8acd21bd-c4d0-4c0a-850e-f5df76474f14": {
+      "ProjectGuid": "8acd21bd-c4d0-4c0a-850e-f5df76474f14",
+      "DisplayName": "WebApplication5",
+      "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    },
+    "cad5fa18-fa5d-4a12-bbad-510d89efe395": {
+      "ProjectGuid": "cad5fa18-fa5d-4a12-bbad-510d89efe395",
+      "DisplayName": "WebApplication5.Tests",
+      "ColorIndex": 1
+    },
+    "f5f30269-19c8-4e4f-9c22-f9af83159925": {
+      "ProjectGuid": "f5f30269-19c8-4e4f-9c22-f9af83159925",
+      "DisplayName": "docker-compose",
+      "ColorIndex": 2
+    },
+    "1fb27089-eb48-401e-be75-7077fdae69e8": {
+      "ProjectGuid": "1fb27089-eb48-401e-be75-7077fdae69e8",
+      "DisplayName": "docker-compose",
+      "ColorIndex": 3
+    },
+    "834958b1-d6b4-486c-9361-ba8d4b81331f": {
+      "ProjectGuid": "834958b1-d6b4-486c-9361-ba8d4b81331f",
+      "DisplayName": "docker-compose",
+      "ColorIndex": 4
+    },
+    "f6b257a3-ce5c-4df6-85c5-2e4f9e004905": {
+      "ProjectGuid": "f6b257a3-ce5c-4df6-85c5-2e4f9e004905",
+      "DisplayName": "docker-compose-win",
+      "ColorIndex": 5
+    },
+    "58fd3044-339a-4672-b7bf-480e27571aa9": {
+      "ProjectGuid": "58fd3044-339a-4672-b7bf-480e27571aa9",
+      "DisplayName": "docker-compose",
+      "ColorIndex": 6
+    },
+    "a3d9c03a-0b91-4cd1-9950-1f548846b9e6": {
+      "ProjectGuid": "a3d9c03a-0b91-4cd1-9950-1f548846b9e6",
+      "DisplayName": "docker-compose",
+      "ColorIndex": 7
+    },
+    "471a091f-96d6-4db2-9e96-8500e9381dd2": {
+      "ProjectGuid": "471a091f-96d6-4db2-9e96-8500e9381dd2",
+      "DisplayName": "ConnectRabbitMQ",
+      "ColorIndex": 8
+    },
+    "b7989779-dab5-4a9e-aa22-cb7816dd1565": {
+      "ProjectGuid": "b7989779-dab5-4a9e-aa22-cb7816dd1565",
+      "DisplayName": "Consumer",
+      "ColorIndex": 9
+    },
+    "1f639b45-9392-4d60-aa44-618a918fa8e0": {
+      "ProjectGuid": "1f639b45-9392-4d60-aa44-618a918fa8e0",
+      "DisplayName": "Consumer",
+      "ColorIndex": 10
+    },
+    "8ddec126-2015-4532-bde7-f569e2caf621": {
+      "ProjectGuid": "8ddec126-2015-4532-bde7-f569e2caf621",
+      "DisplayName": "Consumer1",
+      "ColorIndex": 11
+    },
+    "5e3957f4-a2b1-4410-9ac4-4a08c7075b47": {
+      "ProjectGuid": "5e3957f4-a2b1-4410-9ac4-4a08c7075b47",
+      "DisplayName": "Solution Items",
+      "ColorIndex": 12
+    }
+  },
+  "NextColorIndex": 13
+}

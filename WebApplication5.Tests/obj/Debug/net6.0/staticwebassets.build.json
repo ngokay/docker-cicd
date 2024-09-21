@@ -1,0 +1,23 @@
+{
+  "Version": 1,
+  "Hash": "lfP5snFb3satU0wtAvKNdE+rdOgEFxq/pGDvZtbkJw4=",
+  "Source": "WebApplication5.Tests",
+  "BasePath": "_content/WebApplication5.Tests",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "C:\\Users\\NgoAnh\\Documents\\docker-project\\WebApplication5\\WebApplication5\\WebApplication5.csproj",
+      "Version": 2,
+      "Source": "WebApplication5",
+      "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier"
+    }
+  ],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
