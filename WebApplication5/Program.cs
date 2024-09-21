@@ -21,6 +21,14 @@ using RabbitMQ.Client;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.WebHost.ConfigureKestrel(serverOptions =>
+{
+    serverOptions.ConfigureHttpsDefaults(listenOptions =>
+    {
+        listenOptions.ClientCertificateMode = ClientCertificateMode.AllowCertificate;
+    });
+});
+
 // add cross origin
 
 const string policyName = "CorsPolicy";
@@ -142,7 +150,7 @@ var apiVersionDescriptionProvider = app.Services.GetRequiredService<IApiVersionD
 //}
 
 
-//app.UseHttpsRedirection();
+app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
