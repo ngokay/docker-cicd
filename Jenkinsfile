@@ -26,19 +26,26 @@ pipeline{
             }
         }
 
-        stage('Docker Hub login') {
-            steps {
+        // stage('Docker Hub login') {
+        //     steps {
+        //         script {
+        //             // Use Jenkins credentials for Docker Hub login
+        //             withCredentials([usernamePassword(credentialsId: dockerHubCredentials, usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+        //                 bat "docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD"
+        //             }
+        //         }
+        //     }
+        // }
+
+        stage("Build container"){
+            steps{
                 script {
                     // Use Jenkins credentials for Docker Hub login
                     withCredentials([usernamePassword(credentialsId: dockerHubCredentials, usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
                         bat "docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD"
                     }
                 }
-            }
-        }
 
-        stage("Build container"){
-            steps{
                 bat 'docker context use default'
                 //bat 'docker-compose up -d --no-color --wait'
                 bat 'docker-compose build'
