@@ -2,7 +2,7 @@ version: '3.4'
 name: build-app-test
 services:
   webapplication5:
-    image: ${DOCKER_REGISTRY-}webapplication5
+    image: ngoanh93/webapplication5
     build:
       context: .
       dockerfile: WebApplication5/Dockerfile
@@ -80,7 +80,7 @@ services:
       - elastic
 
   consumer:
-    image: ${DOCKER_REGISTRY-}consumer
+    image: ngoanh93/consumer
     build:
       context: .
       dockerfile: Consumer/Dockerfile
