@@ -38,6 +38,10 @@ pipeline{
         // }
 
         stage("Build container"){
+            environment {
+                DOCKER_TAG = "${GIT_BRANCH.tokenize('/').pop()}-${BUILD_NUMBER}"
+                DOCKER_IMAGE = "TEST"
+            }
             steps{
                 script {
                     // Use Jenkins credentials for Docker Hub login
@@ -48,9 +52,9 @@ pipeline{
 
                 bat 'docker context use default'
                 //bat 'docker-compose up -d --no-color --wait'
-                bat 'docker-compose build'
+                bat 'docker-compose build -t ${DOCKER_IMAGE}:${DOCKER_TAG}'
                 // Push the image
-                bat 'docker-compose push'
+                bat 'docker-compose push ${DOCKER_IMAGE}:${DOCKER_TAG}'
             }
         }        
     }
