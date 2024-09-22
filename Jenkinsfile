@@ -52,7 +52,7 @@ pipeline{
 
                 bat 'docker context use default'
                 //bat 'docker-compose up -d --no-color --wait'
-                bat 'docker-compose build -t ${DOCKER_IMAGE}:${DOCKER_TAG}'
+                bat 'docker-compose build -d ${DOCKER_IMAGE}:${DOCKER_TAG}'
                 // Push the image
                 bat 'docker-compose push ${DOCKER_IMAGE}:${DOCKER_TAG}'
             }
